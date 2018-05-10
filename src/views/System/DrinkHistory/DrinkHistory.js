@@ -1,12 +1,68 @@
 import React, { Component } from 'react';
 import { Badge, Card, CardBody, CardHeader, Col, Pagination, PaginationItem, PaginationLink, Row, Table,Form,
   FormGroup,FormText,FormFeedback,Input,Button,Label, } from 'reactstrap';
-import "./DrinkHistory.css"
+import ReactEcharts from 'echarts-for-react';
+import "./DrinkHistory.css";
+
 
 
 
 class DrinkHistory extends Component {
-  
+  constructor(props) {  
+    super(props);
+    this.state = {
+      option: {
+        //backgroundColor: '#0f475f',
+        color:["#367fa9","#4A95FF","#5EBEFC","#2EF7F3","#FFFFFF"],
+        title : {
+            text: '奶牛饮水次数变化',
+            subtext: '重要指标',
+            textAlign:'left',
+            textStyle:{color:"#000",fontSize:"16",fontWeight:"normal"}
+        },
+        tooltip : {
+            trigger: 'axis'
+        },
+        legend: {
+            data:['饮水次数'],
+            textStyle:{color:"#000",fontSize:"16",fontWeight:"normal"}
+        },
+        toolbox: {
+            show : true,
+            feature : {
+                mark : {show: true},
+                dataView : {show: true, readOnly: false},
+                magicType : {show: true, type: ['line', 'bar']},
+                restore : {show: true},
+                saveAsImage : {show: true}
+            }
+        },
+        calculable : true,
+        xAxis : [
+            {
+                type : 'category',
+                boundaryGap : false,
+                axisLine: { show: true,lineStyle:{ color:'#6173A3' }},
+                axisLabel:{interval:0,textStyle:{color:'#9ea7c4',fontSize:14} },
+                axisTick : {show: false},
+                data : {} //需要set 相关很坐标，动态天数
+            }
+        ],
+        yAxis : [
+            {
+                type : 'value',
+                axisLabel : {
+                    formatter: '{value} 次'
+                },
+                axisTick : {show: false},
+                splitLine: {show:false},
+                axisLabel:{textStyle:{color:'#9ea7c4',fontSize:14} },
+                axisLine: { show: true,lineStyle:{ color:'#6173A3'}},
+            }
+        ]
+    }
+    }
+  }
   render() {
     return (
      <div >
@@ -53,7 +109,7 @@ class DrinkHistory extends Component {
               </CardHeader>
               <CardBody>
               <div className="chart-wrapper">
-               <h1>add chart here</h1>
+                <ReactEcharts option={this.state.option} />
               </div>
               </CardBody>
             </Card>

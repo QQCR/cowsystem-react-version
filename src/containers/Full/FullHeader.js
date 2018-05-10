@@ -14,14 +14,14 @@ class FullHeader extends Component {
   render() {
 
     // eslint-disable-next-line
-    const { children, ...attributes } = this.props;
+    // const { children, ...attributes } = this.props;
 
     return (
       <React.Fragment>
         <AppSidebarToggler className="d-lg-none" display="md" mobile />
         <AppNavbarBrand
-          full={{ src: process.env.PUBLIC_URL + 'assets/img/brand/logo.png', width: 89, height: 25, alt: ' Logo' }}
-          minimized={{ src: process.env.PUBLIC_URL + 'assets/img/brand/logo.png', width: 30, height: 30, alt: ' Logo' }}
+          full={{ src:  'assets/img/brand/logo.png', width: 89, height: 25, alt: ' Logo' }}
+          minimized={{ src: '/assets/img/brand/logo.png', width: 30, height: 30, alt: ' Logo' }}
         />
         <AppSidebarToggler className="d-md-down-none" display="lg" />
 
